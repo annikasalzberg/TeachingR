@@ -1,6 +1,6 @@
 ---
 title: "Graphing - ggplot basics"
-author: "Annika Salzberg & Casey Hale"
+author: "Annika Salzberg"
 date: "2/20/2019"
 output:
   html_document:
@@ -89,11 +89,11 @@ Prostitutes$month <- factor(Prostitutes$month,
              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
 ```
 
-This is a manual fix for when you can't automatically change the levels of a column. We learned last week that we can use the arrange() function for this:
+This is a manual fix for when you can't automatically change the levels of a column. We can use the arrange() function for this:
 ```{r, eval=FALSE}
 rearrangedVector <- arrange(data, variable1, variable2, variable3)
 ```
-But if our levels are characters that the program doesn't automatically recognize how to order, we have to do it the manual way.
+But if our levels are characters that the program doesn't automatically recognize how to order (like in our example of the months above), we have to do it the manual way.
 
 ### More color changes
 If I want to change the colors another way, I can actually create a vector made up of colors, and insert that in any ggplot code when color is applicable! Doing this is as simple as adding the following line of code:
