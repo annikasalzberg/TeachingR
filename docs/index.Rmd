@@ -58,7 +58,7 @@ geom_hline (horizontal line)
 geom_abline (angled line)
 geom_map, geom_boxplot, geom_polygon, geom_text, etc. etc.!
 
-There are a ton of these, but we'll just go over a few of the most useful ones.
+There are a ton of these, but we'll just go over a few of the most common ones.
 
 *****************************************************************************
 *****************************************************************************
@@ -73,7 +73,7 @@ ggplot(Prostitutes,aes(x=Year, y=count, color=month)) +
   geom_smooth(method = "lm", color="black", se = FALSE)
 ```
    
-   This is the exact same graph we made with base r, but it already looks better!   It's pretty simple to understand: we've taken the base ggplot code that specifies what data we're using, and added geom_point() to specify we want a scatterplot. We then added a linear model line, colored it black, and specified that we don't want them to include the region of error around the line that is automatically included (with se=FALSE). We could have kept that region of error in, but I took it out just for the sake of replicating our earlier graph.      
+   This is the exact same graph we made with base r, but it already looks better!   It's pretty straightforward: we've taken the base ggplot code that specifies what data we're using, and added geom_point() to specify we want a scatterplot. We then added a linear model line, colored it black, and specified that we don't want them to include the region of error around the line that is automatically included (with se=FALSE). We could have kept that region of error in, but I took it out just for the sake of replicating our earlier graph.      
   Now let's add some color!
 
 ```{r}
@@ -221,7 +221,7 @@ identityGraph <- ggplot(ChestSizes, aes(x=chest, y=count)) +
 #theme_set(theme_gray())
 cowplot::plot_grid(binGraph, identityGraph, labels = c("Example 1", "Example 2"))
 ```
-However, the "bin" functionality is being phased out of ggplot - and you should really use the geom_histogram function instead if you want to graph count data! The point of the above is to show why it's important that you take note of which values your graph is actually showing.
+However, the "bin" (or "count") functionality is being phased out of ggplot - and you should really use the geom_histogram function instead if you want to graph count data! The point of the above is to show why it's important that you take note of which values your graph is actually showing.
 
 **************************************************************************
 # Histograms
