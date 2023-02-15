@@ -15,6 +15,7 @@ library(ggplot2)
 library(HistData)
 library(survival)
 library(cowplot)
+Plumbers <- Prostitutes
 ```
 
 ## Introduction
@@ -39,8 +40,8 @@ mean(mtcars$mpg) # mean of the particular column you call with "$"
 #### Basic Scatterplot
 This is just a quick example of what it looks like to make a scatterplot using base R: 
 ```{r, warning=FALSE}
-plot(Prostitutes$Year, Prostitutes$count, main="Prostitutes in Paris", xlab="Years ", ylab="# of Prostitutes")
-abline(lm(Prostitutes$count~Prostitutes$Year))
+plot(Plumbers$Year, Plumbers$count, main="Plumbers in Paris", xlab="Years ", ylab="# of Plumbers")
+abline(lm(Plumbers$count~Plumbers$Year))
 ```
 
 ***
@@ -68,7 +69,7 @@ _Using geom_point_
 
 #### Here's a basic graph we can start with:
 ```{r}
-ggplot(Prostitutes,aes(x=Year, y=count, color=month)) + 
+ggplot(Plumbers,aes(x=Year, y=count, color=month)) + 
   geom_point() +
   geom_smooth(method = "lm", color="black", se = FALSE)
 ```
@@ -77,14 +78,14 @@ ggplot(Prostitutes,aes(x=Year, y=count, color=month)) +
   Now let's add some color!
 
 ```{r}
-ggplot(Prostitutes,
+ggplot(Plumbers,
        aes(x=Year, y=count, color=month)) + 
   geom_point() 
 ```
 
 But the months are displaying in the wrong order! There are two ways to fix this. Here's the first:
 ```{r}
-Prostitutes$month <- factor(Prostitutes$month, 
+Plumbers$month <- factor(Plumbers$month, 
   levels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun",
              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"))
 ```
@@ -104,7 +105,7 @@ But a caveat of this is you have to make sure there are enough colors in your ne
 
 Next we're going to change some elements. Another thing we can do is assign the basic graph to a simple name, so we don't have to keep typing the whole thing!
 ```{r}
-prostituteBasic <- ggplot(Prostitutes,
+plumberBasic <- ggplot(Plumbers,
        aes(x=Year, y=count, color=month)) + geom_point()
 ```
 
@@ -112,10 +113,10 @@ prostituteBasic <- ggplot(Prostitutes,
 ### Add labels!
 Don't like the automatic labels applied by R? Just change them!
 ```{r}
-prostituteBasic + 
-  ylab('Number of Prostitutes') +
+plumberBasic + 
+  ylab('Number of Plumbers') +
   xlab('Years') +
-  ggtitle('Prostitute Population of Paris')
+  ggtitle('Plumber Population of Paris')
 ```
 
 **************************************************************************
@@ -125,7 +126,7 @@ _geom_line and geom_point_
 
 Line graphs are simple - they're basically just scatterplots with geom_line added onto them! We won't spend much time on these, because much of what applies to scatter plots applies to them as well.
 ```{r}
-ggplot(Prostitutes,
+ggplot(Plumbers,
        aes(x=Year, y=count, color=month, shape=month)) + 
   geom_point(size=2) +
   geom_line(size=1) +
